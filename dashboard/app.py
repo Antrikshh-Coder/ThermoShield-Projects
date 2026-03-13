@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import os  # Added for robust file path handling
 
 # -------------------------------------------------
 # PAGE CONFIG
@@ -102,8 +103,9 @@ st.divider()
 # -------------------------------------------------
 # LOAD DATA
 # -------------------------------------------------
-
-df = pd.read_csv("../data/synthetic_insulation_manufacturing_data.csv")
+# Robust CSV path (works locally and on Streamlit Cloud)
+data_path = os.path.join("data", "synthetic_insulation_manufacturing_data.csv")
+df = pd.read_csv(data_path)
 
 # -------------------------------------------------
 # SIDEBAR
